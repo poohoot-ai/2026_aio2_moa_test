@@ -21,7 +21,7 @@ jobs:
           python-version: "3.11"
 
       - name: 의존성 설치
-        run: pip install -r requirements.txt
+        run: pip install -r requirements-dev.txt
 
       - name: 테스트 실행
         # 커버리지 85% 미만이면 테스트가 모두 통과해도 실패 → 테스트를 지우는 변경을 막는다

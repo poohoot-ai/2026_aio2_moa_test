@@ -25,3 +25,19 @@ def test_check_endpoint():
     body = res.json()
     assert body["passed"] is True
     assert body["violations"] == []
+
+
+def test_check_endpoint_reports_violations():
+    res = client.post(
+        "/check",
+        json={"text": "최고의 의자입니다!", "name": "숲속 캠핑 의자", "price": "29,900원"},
+    )
+    assert res.status_code == 200
+    body = res.json()
+    assert body["passed"] is False
+    assert len(body["violations"]) > 0
+
+
+def test_check_endpoint_rejects_missing_field():
+    res = client.post("/check", json={"text": "숲속 캠핑 의자입니다."})
+    assert res.status_code == 422
