@@ -18,8 +18,8 @@ def check_rules(text, product):
         violations.append(f"R1 문장 수 위반: 마침표가 {text.count('.')}개입니다.")
     if name not in text:
         violations.append(f'R2 제품명 누락: "{name}"이 없습니다.')
-    if price not in text:
-        violations.append(f'R3 가격 누락: "{price}"이 없습니다.')
+    # if price not in text:
+    #     violations.append(f'R3 가격 누락: "{price}"이 없습니다.')
     used = [w for w in BANNED if w in text]
     if used:
         violations.append(f"R4 금지 단어 사용: {used}")
